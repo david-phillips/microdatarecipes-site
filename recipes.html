@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>microdata recipes : get hip to html5 microdata</title>
+        <link rel="stylesheet" type="text/css" href="css/site.css"></link>
+    </head>
+
+
+
+
+    <body>
+        <div id="content">
+        <div id="recipe-links">
+            <!-- Image courtesy of The Noun Project -->
+            <a href=""><img src="img/microscope.png" id="microscope" alt="microscope" /></a>
+            
+            <ul id="recipe-list">
+                <!-- <li class="bold">creating microdata</li> -->
+                <ul id="creation-list">
+                    <li class="bold">Basic</li>
+                    <ul class="links">
+                        <li><a href="#recipe-1" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Make an item&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-2" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Make item w/type&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-3" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Make nested item&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-4" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add property&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-5" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add str property&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-6" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add url property&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-7" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add date property&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-8" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add item property&nbsp;&nbsp;</a></li>
+                    </ul>
+                    <li class="bold">Intermediate</li>
+                    <ul class="links">
+                        <li><a href="#recipe-9" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Using itemref&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-10" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Many-one properties&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-11" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>One-many properties&nbsp;&nbsp;</a></li>
+                        <li><a href="#recipe-12" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Unique ids&nbsp;&nbsp;</a></li>
+                    </ul>
+                    <li class="bold">Advanced</li>
+                    <ul class="links">
+                        <li><a href="#recipe-13" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Microdata in json&nbsp;&nbsp;</a></li>
+                    </ul>
+                </ul>
+            </ul>
+        </div>
+
+        <div id="recipes">
+
+            <a href="http://www.microdatarecipes.org"><span id="title">M i c r o d a t a <span id="title-fragment">R e c i p e s</span></span></a>
+
+            <!-- COPY THIS AS A RECIPE TEMPLATE
+            <div id="recipe-X" class="hidden">
+                <span class="recipe-label">Problem: </span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li></li>
+                </ol>
+            </div>
+            -->
+
+
+
+
+            <div id="recipe-1" class="recipe">
+                <span class="recipe-label">Problem: You want to mark up a section of a document as an <em>item</em>.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div <span class="bright">itemscope</span>&gt;
+            Eric Dolphy
+        &lt;/div&gt; plays a mean alto.
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>Items are created by using the <em>itemscope</em> attribute on an element.</li>
+                    <li>Notice that <em>itemscope</em> is a boolean attribute with a strangely reduced syntax.  If you're marking up your doc with XHTML you'll want to use the expanded syntax: itemscope="itemscope" in order that your markup be well-formed</li>
+                    <li>We've created an item here but we haven't assigned any <em>type</em> to it.  Nor have we assigned any <em>properties</em> to it.  In practice you'll probably only create an item if you're going to add a type and/or properties to it.</li>
+                </ol>
+            </div>
+
+
+
+
+            <div id="recipe-2" class="recipe">
+                <span class="recipe-label">Problem: You want to create an item that has some type (e.g. Person, Location).</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div itemscope <span class="bright">itemtype="http://www.example.com/JazzMusician"</span>&gt;
+            Charles Mingus
+        &lt;/div&gt;
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>By including the <em>itemtype</em> attribute on the element that bears the itemscope attribute you can assign a semantic type to the item.</li>
+                    <li>Notice that the type is a URL. This is a requirement.  <b>Types must be URLs.</b></li>
+                    <li>Types are often defined in vocabularies that specify other types and properties that items of the given types can have.</li>
+                </ol>
+            </div>
+
+
+
+
+            <div id="recipe-3" class="recipe">
+                <span class="recipe-label">Problem: You want to create one item within the scope of another item.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div <span class="bright">itemscope</span> itemtype="http://www.example.com/JazzGroup"&gt;
+            Modern Jazz Quartet
+            &lt;div <span class="bright">itemscope</span> itemtype="http://www.example.com/JazzMusician"&gt;
+                John Lewis: piano
+            &lt;/div&gt;
+        &lt;/div&gt;
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>Including the itemscope attribute on an element defines a microdata scope which extends to the element's closing tag.  Since HTML elements can themselves be arbitrarily embedded, you can created a nested microdata scope (i.e. nested item) by including the itemscope attribute on an element that's a descendent of an element that also has an itemscope attribute.</li>
+                    <li>As with the first recipe, we're not adding any properties to our items here.  In practice you'd be adding properties to these items and as you'll see in a later recipe the nested item can actually be the value of a property of the outer item.</li>
+                </ol>
+            </div>
+
+
+
+
+
+            <div id="recipe-4" class="recipe">
+                <span class="recipe-label">Problem:  You want to attach a property to an item.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div itemscope itemtype="http://www.example.com/JazzGroup&gt;
+            &lt;span <span class="bright">itemprop="name"</span>&gt;Miles Davis Quintet&lt;/span&gt;
+        &lt;/div&gt;
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>We attach properties to items using the <em>itemprop</em> attribute on elements within the scope of the item.</li>
+                    <li>A property is a name/value pair.  The <em>name</em> is the value of the <em>itemprop</em> attribute.  The value is a bit more complicated.  In this example, the value occurs as the text content of the element that bears the itemprop attribute.  We'll switch this up in some examples below.
+                    <li>Note that whereas the value of the <em>itemtype</em> attribute must be a URL, the value of the <em>itemprop</em> attribute can be a URL or (as is the case above) a simple string value.</li> 
+                </ol>
+            </div>
+
+
+
+
+            <div id="recipe-5" class="recipe">
+                <span class="recipe-label">Problem:  You want to attach a property to an item and the value of the property is a string.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div itemscope itemtype="http://www.example.com/JazzGroup&gt;
+            &lt;span <span class="bright">itemprop="name"</span>&gt;<span class="bright">Miles Davis Quintet</span>&lt;/span&gt;
+        &lt;/div&gt;
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>This is the same as the above recipe!</li>
+                    <li>The value of the property is the <em>span</em> element's text content, which is a string.</li>
+                    <li>There are HTML elements other than <em>span</em> that we can use to create properties whose values are strings.  The microdata spec doesn't positively enumerate them.  Rather it says if the <em>itemprop</em> attribute occurs on an element that is <b>not</b> x, y or z then the property's value will be the text content of the element.  The actual x, y and z are:
+                        <ul>
+                            <li>meta</li>
+                            <li>audio</li>
+                            <li>embed</li>
+                            <li>iframe</li>
+                            <li>img</li>
+                            <li>source</li>
+                            <li>track</li>
+                            <li>video</li>
+                            <li>a</li>
+                            <li>area</li>
+                            <li>link</li>
+                            <li>oject</li>
+                            <li>time</li>
+                            <li>datetime</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+
+
+
+            <div id="recipe-6" class="recipe">
+                <span class="recipe-label">Problem: You want to attach a property to an item and the value of the property is a URL.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div itemscope itemtype="http://www.example.com/JazzGroup"&gt;
+            &lt;span itemprop="name"&gt;The Bad Plus&lt;/span&gt;
+            &lt;a <span class="bright">itemprop="homepage"</span> href="<span class="bright">http://www.thebadplus.com/</span>"&gt;link&lt;/a&gt;
+        &lt;/div&gt;
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>The 'homepage' property has a URL value that resolves to the absolute value of the <em>a</em> element's href attribute.</li>
+                    <li>
+                        Here are the other elements whose property values will resolve to their href attributes:
+                        <ul>
+                            <li>area</li>
+                            <li>link</li>
+                        </ul>
+                    </li>
+                    <li>
+                        You can also get URL properties that resolve to the <em>src</em> attribute of the following elements:
+                        <ul>
+                            <li>audio</li>
+                            <li>embed</li>
+                            <li>iframe</li>
+                            <li>img</li>
+                            <li>source</li>
+                            <li>track</li>
+                            <li>video</li>
+                        </ul>
+                    </li>
+                    <li>
+                        You can also get URL properties that resolve to the <em>data</em> attribute of the following elements:
+                        <ul>
+                            <li>object</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+
+
+
+            <div id="recipe-7" class="recipe">
+                <span class="recipe-label">Problem:  You want to attach a property to an item and the value of the property is a date.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div itemscope itemtype="http://www.example.com/JazzMusician&gt;
+            &lt;span itemprop="name"&gt;John Coltrane&lt;/span&gt;
+            was born on
+            &lt;time <span class="bright">itemprop="birthdate"</span> datetime="<span class="bright">1926-09-23</span>"&gt;September 23rd 1926&lt;/time&gt;
+        &lt;/div&gt;
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>When an <em>itemprop</em> occurs on a <em>time</em> element, the value of the property is the value of the <em>datetime</em> attribute.</li>
+                    <li>The <em>time</em> element is new in HTML5.</li>
+                </ol>
+            </div>
+
+
+
+
+            <div id="recipe-8" class="recipe">
+                <span class="recipe-label">Problem: You want to attach a property to an item and the property's value is another item.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div itemscope itemtype="http://www.example.com/JazzGroup&gt;
+            &lt;span itemprop="name"&gt;Miles Davis Quintet&lt;/span&gt;
+            &lt;div <span class="bright">itemprop="has-member" itemscope</span> itemtype="http://www.example.com/JazzMusician"&gt;
+                Trumpet: &lt;span itemprop="name"&gt;Miles Davis&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div <span class="bright">itemprop="has-member" itemscope</span> itemtype="http://www.example.com/JazzMusician"&gt;
+                Saxophone: &lt;span itemprop="name"&gt;Wayne Shorter&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div <span class="bright">itemprop="has-member" itemscope</span> itemtype="http://www.example.com/JazzMusician"&gt;
+                Piano: &lt;span itemprop="name"&gt;Herbie Hancock&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div <span class="bright">itemprop="has-member" itemscope</span> itemtype="http://www.example.com/JazzMusician"&gt;
+                Bass: &lt;span itemprop="name"&gt;Ron Carter&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div <span class="bright">itemprop="has-member" itemscope</span> itemtype="http://www.example.com/JazzMusician"&gt;
+                Drums: &lt;span itemprop="name"&gt;Tony Williams&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>To create a property whose value is an item, include an <em>itemscope</em> attribute on the same element as the <em>itemprop</em> attribute.</li>
+                    <li>In the recipe above the JazzGroup item has  5 <em>member</em> properties whose values are items of type JazzMusician.</li>
+                </ol>
+            </div>
+            
+            <div id="recipe-9" class="recipe">
+                <span class="recipe-label">Problem: You want to attach a property to an item but the property's value isn't a descendant of the item.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        Chick Corea Akoustic Band -
+        &lt;span id="piano" itemprop="plays"&gt;Piano&lt;/span&gt;:
+                &lt;span itemscope <span class="bright">itemref="piano"</span>&gt;Chick Corea&lt;/span&gt;
+        &lt;span id="bass" itemprop="plays"&gt;Bass&lt;/span&gt;:
+                &lt;span itemscope <span class="bright">itemref="bass"</span>&gt;John Pattitucci&lt;/span&gt;
+        &lt;span id="drums" itemprop="plays"&gt;Drums&lt;/span&gt;:
+                &lt;span itemscope <span class="bright">itemref="drums"</span>&gt;Dave Weckl&lt;/span&gt;
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>By using the <em>itemref</em> attribute we can attach properties to items no matter where the item or property resides in the document.</li>
+                    <li>The <em>itemref</em> attribute goes on the same element as the <em>itemscope</em> attribute.</li>
+                    <li>The <em>itemref</em> attribute takes a space-separated lists of <em>id</em>s.</li>
+                    <li>If an item has an itemref with ids <em>a b c</em>, then the elements with ids a, b and c will be visited when searching for the item's properties.</li>
+                    <li>In the recipe above, we've used the <em>itemref</em> idiom because the property we want to attach to the item occurs <b>before</b> the item's element.</li>
+                    <li>The elements specified in the <em>itemref</em> attribute are visited <b>in addition to</b> the descendent elements of the element bearing the <em>itemscope</em> attribute.</li>
+                </ol>
+            </div>
+            
+            <div id="recipe-10" class="recipe">
+                <span class="recipe-label">Problem: You want an item to have multiple properties each having the same value.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div itemscope itemtype="http://www.example.com/JazzMusician"&gt;
+            &lt;span itemprop="name"&gt;Art Blakey&lt;/span&gt;
+            &lt;div <span class="bright">itemprop="member-of leader-of"</span> itemscope itemtype="www.example.com/JazzGroup"&gt;
+                &lt;span itemprop="name"&gt;The Jazz Messengers&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>The <em>itemprop</em> attribute takes a list of space-separated property names as its value.</li>
+                    <li>If the <em>itemprop</em> attribute contains N space-separated property names, then it's being used to attach N different properties to the item.</li>
+                </ol>
+            </div>
+            
+            <div id="recipe-11" class="recipe">
+                <span class="recipe-label">Problem: You want an item to have multiple properties each having the same name but different values.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div itemscope itemtype="http://www.example.com/JazzMusician"&gt;
+            &lt;span itemprop="name"&gt;Keith Jarrett&lt;/span&gt; is a multi-instrumentalist plays
+            &lt;span <span class="bright">itemprop="plays"</span>&gt;piano&lt;/span&gt;,
+            &lt;span <span class="bright">itemprop="plays"</span>&gt;harpsichord&lt;/span&gt; and
+            &lt;span <span class="bright">itemprop="plays"</span>&gt;soprano saxophone&lt;/span&gt;.
+        &lt;/div&gt;
+               </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>This one's easy: We simply attach multiple <em>itemprop</em> attributes to the item all of which have the same property name.</li>
+                    <li>The fact that we can have such one-to-many properties means that you can't store an item's properties in a typical map/hash/dictionary data structure in which keys are required to be unique.</li>
+                </ol>
+            </div>
+            
+            <div id="recipe-12" class="recipe">
+                <span class="recipe-label">Problem: You want to create an item with a unique ID.  Not just unique to the page but unique on the web.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        &lt;div itemtype="http://www.example.com/album" <span class="bright">itemid="B0000262LA"</span>&gt;Offramp&lt;/div&gt;,
+            by Pat Metheny
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>We use the <em>itemid</em> attribute to record the unique identifier of the item.</li>
+                    <li>The value of the <em>itemid</em> attribute must be a URL.</li>
+                    <li>The <em>itemid</em> attribute can only go an elements that have both an <em>itemscope</em> and <em>itemtype</em> attribute.</li>
+                    <li>In the example above we use an ASIN (Amazon standard ID number) as the ID for the album.</li>
+                </ol>
+            </div>
+            
+            <div id="recipe-17" class="recipe">
+                <span class="recipe-label">Problem: You want to store microdata information in JSON, either
+                                                    prior to putting it into HTML or after parsing it out of HTML.</span><br /><br />
+                <span class="recipe-label">Recipe:</span><br />
+                <pre>
+        <b>The Markup:</b><br /><br />
+        &lt;div itemscope itemtype="http://www.example.com/JazzGroup&gt;
+            &lt;span itemprop="name"&gt;Claudia Quintet&lt;/span&gt;
+            Genre: &lt;span itemprop="has-style"&gt;Hipster Jazz&lt;/span&gt;
+            &lt;div itemprop="has-member" itemscope itemtype="http://www.example.com/JazzMusician"&gt;
+                Drums: &lt;span itemprop="name"&gt;John Hollenbeck&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div itemprop="has-member" itemscope itemtype="http://www.example.com/JazzMusician"&gt;
+                Bass: &lt;span itemprop="name"&gt;Drew Gress&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div itemprop="has-member" itemscope itemtype="http://www.example.com/JazzMusician"&gt;
+                Reeds: &lt;span itemprop="name"&gt;Chris Speed&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div itemprop="has-member" itemscope itemtype="http://www.example.com/JazzMusician"&gt;
+                Vibes: &lt;span itemprop="name"&gt;Matt Moran&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div itemprop="has-member" itemscope itemtype="http://www.example.com/JazzMusician"&gt;
+                Accordion: &lt;span itemprop="name"&gt;Ted Reichman&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        <br /><br /><b>The JSON:</b><br /><br />
+        
+        {
+            items: [
+                {   
+                    type: 'http://www.example.com/JazzGroup',
+                    properties: {
+                        has-style: ['Hipster Jazz'],    
+                        has-member: [
+                            {
+                                type: ['http://www.example.com/JazzMusician'],
+                                name: ['John Hollenbeck']
+                            },
+                            {
+                                type: ['http://www.example.com/JazzMusician'],
+                                name: ['Drew Gress']
+                            },
+                            {
+                                type: ['http://www.example.com/JazzMusician'],
+                                name: ['Chris Speed']
+                            },
+                            {
+                                type: ['http://www.example.com/JazzMusician'],
+                                name: ['Matt Moran']
+                            },
+                            {
+                                type: ['http://www.example.com/JazzMusician'],
+                                name: ['Ted Reichman']
+                            }        
+                        ]
+                    }   
+                }   
+            ]   
+        }
+
+                </pre>
+                <span class="recipe-label">Notes:</span><br />
+                <ol class="notes">
+                    <li>A microdata document is represented as JSON object with a single mapping whose name is <em>items</em> and whose value is a list of items.</li>
+                    <li>A microdata item is represented as a JSON object whose names are the item's property names and whose values are the item's property values.</li>
+                    <li>If an item has a property P that occurs N times, then the JSON object will have a single mapping with name P whose value will be a
+                        JSON list of length N containing the property values.  Note that if N == 1, the single property value still goes in a JSON list!</li>
+                    <li>Read up more <a href="http://www.w3.org/TR/microdata/#json">here</a>.</li>
+                </ol>
+            </div>
+        </div>
+         <footer>
+                caution: this is a work in progress.<br />
+                advice4u: read <a href="http://www.w3.org/TR/microdata">the spec</a><br />
+                advice4me: david at microdatarecipes dot org<br />
+        </footer>
+
+        <script type="text/javascript" src="js/jquery/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('a.recipe-link').bind({
+                    'mouseover': function() {
+                        $('.point', $(this)).removeClass('hidden')
+                    },
+                    'mouseout': function() {
+                        $('.point', $(this)).addClass('hidden')
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

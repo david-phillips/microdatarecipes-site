@@ -1,0 +1,123 @@
+/*************************************************
+ *
+ * Top-Level Elements
+ *
+ ************************************************/
+body {
+    font-size: 95%;
+    font-family: arial;
+    /*background-color: #8A4117;*/
+    background-color: #8A5C2E;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/*************************************************
+ *
+ * Title
+ *
+ ************************************************/
+#title {
+    font-size: 240%;
+    margin: 30px;
+    color: #FFF380;
+}
+
+#microscope {
+    margin-left: 34px;
+}
+
+#title-fragment {
+    color: orange;
+}
+
+#message {
+    float: right;
+    font-size: 75%;
+}
+/*************************************************
+ *
+ * Recipe Links
+ *
+ ************************************************/
+
+ul {
+    margin: 4px;
+    padding: 4px;
+    list-style-type: none;
+}
+
+a.recipe-link {
+    border-bottom: 1px dotted black;
+    
+}
+span.pointer {
+    color: #00FF00;
+}
+
+#recipe-links {
+    position: fixed;
+    float: left;
+    margin-top: 30px;
+    width: 20%;
+}
+.selected-link {
+    background-color: #FFF380;
+}
+
+#recipe-links .hidden {
+    visibility: hidden;
+}
+
+/*************************************************
+ *
+ * Recipes
+ *
+ ************************************************/
+#recipes {
+    float: right;
+    width: 75%;
+    padding-top: 15px;
+    padding-right: 15px;
+}
+
+.recipe {
+    padding-top: 50px;
+    margin-bottom: 200px;
+}
+#recipes .hidden {
+    display: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+span.recipe-label {
+    font-weight: bold;
+}
+
+pre {
+    font-size: 120%;
+    color:  #98AFC7;
+}
+
+ol.notes > li {
+    font-size: 95%;
+    margin-bottom: 2em;
+}
+
+span.bright {
+    color: orange;
+}
+
+footer {
+    clear: both;
+    font-size: small;
+    color: red;
+    margin: 0 auto;
+    width: 500px;
+}

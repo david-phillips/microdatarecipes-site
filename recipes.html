@@ -16,25 +16,25 @@
             <a href=""><img src="img/microscope.png" id="microscope" alt="microscope" /></a>
             
             <ul id="recipe-list" class="links">
-                <li><a href="#recipe-1" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Make an item&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-2" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Make item w/type&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-3" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Make nested item&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-4" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add property&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-5" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add str property&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-6" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add url property&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-7" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add date property&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-8" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add item property&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-9" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Using itemref&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-10" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Many-one properties&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-11" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>One-many properties&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-12" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Unique ids&nbsp;&nbsp;</a></li>
-                <li><a href="#recipe-13" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Microdata in json&nbsp;&nbsp;</a></li>
+                <li>1 &nbsp;<a href="#recipe-1" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Make an item&nbsp;&nbsp;</a></li>
+                <li>2 &nbsp;<a href="#recipe-2" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Make item w/type&nbsp;&nbsp;</a></li>
+                <li>3 &nbsp;<a href="#recipe-3" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Make nested item&nbsp;&nbsp;</a></li>
+                <li>4 &nbsp;<a href="#recipe-4" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add property&nbsp;&nbsp;</a></li>
+                <li>5 &nbsp;<a href="#recipe-5" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add str property&nbsp;&nbsp;</a></li>
+                <li>6 &nbsp;<a href="#recipe-6" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add url property&nbsp;&nbsp;</a></li>
+                <li>7 &nbsp;<a href="#recipe-7" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add date property&nbsp;&nbsp;</a></li>
+                <li>8 &nbsp;<a href="#recipe-8" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Add item property&nbsp;&nbsp;</a></li>
+                <li>9 &nbsp;<a href="#recipe-9" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Using itemref&nbsp;&nbsp;</a></li>
+                <li>10 <a href="#recipe-10" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Many-one properties&nbsp;&nbsp;</a></li>
+                <li>11 <a href="#recipe-11" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>One-many properties&nbsp;&nbsp;</a></li>
+                <li>12 <a href="#recipe-12" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Unique ids&nbsp;&nbsp;</a></li>
+                <li>13 <a href="#recipe-13" class="recipe-link"><span class="point hidden">&gt;&nbsp;</span>Microdata in json&nbsp;&nbsp;</a></li>
             </ul>
         </div>
 
         <div id="recipes">
 
-            <a href="http://www.microdatarecipes.org"><span id="title">M i c r o d a t a <span id="title-fragment">R e c i p e s</span></span></a>
+            <a href="http://www.microdatarecipes.org/recipes.html"><span id="title">M i c r o d a t a <span id="title-fragment">R e c i p e s</span></span></a>
 
             <!-- COPY THIS AS A RECIPE TEMPLATE
             <div id="recipe-X" class="hidden">
@@ -53,7 +53,7 @@
 
 
             <div id="recipe-1" class="recipe">
-                <span class="recipe-label">Problem: You want to mark up a section of a document as an <em>item</em>.</span><br /><br />
+                <span class="recipe-label">Problem 1: You want to mark up a section of a document as an <em>item</em>.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div <span class="bright">itemscope</span>&gt;
@@ -72,7 +72,7 @@
 
 
             <div id="recipe-2" class="recipe">
-                <span class="recipe-label">Problem: You want to create an item that has some type (e.g. Person, Location).</span><br /><br />
+                <span class="recipe-label">Problem 2: You want to create an item that has some type (e.g. Person, Location).</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div itemscope <span class="bright">itemtype="http://www.example.com/JazzMusician"</span>&gt;
@@ -91,7 +91,7 @@
 
 
             <div id="recipe-3" class="recipe">
-                <span class="recipe-label">Problem: You want to create one item within the scope of another item.</span><br /><br />
+                <span class="recipe-label">Problem 3: You want to create one item within the scope of another item.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div <span class="bright">itemscope</span> itemtype="http://www.example.com/JazzGroup"&gt;
@@ -113,7 +113,7 @@
 
 
             <div id="recipe-4" class="recipe">
-                <span class="recipe-label">Problem:  You want to attach a property to an item.</span><br /><br />
+                <span class="recipe-label">Problem 4:  You want to attach a property to an item.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div itemscope itemtype="http://www.example.com/JazzGroup&gt;
@@ -132,7 +132,7 @@
 
 
             <div id="recipe-5" class="recipe">
-                <span class="recipe-label">Problem:  You want to attach a property to an item and the value of the property is a string.</span><br /><br />
+                <span class="recipe-label">Problem 5:  You want to attach a property to an item and the value of the property is a string.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div itemscope itemtype="http://www.example.com/JazzGroup&gt;
@@ -168,7 +168,7 @@
 
 
             <div id="recipe-6" class="recipe">
-                <span class="recipe-label">Problem: You want to attach a property to an item and the value of the property is a URL.</span><br /><br />
+                <span class="recipe-label">Problem 6: You want to attach a property to an item and the value of the property is a URL.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div itemscope itemtype="http://www.example.com/JazzGroup"&gt;
@@ -211,7 +211,7 @@
 
 
             <div id="recipe-7" class="recipe">
-                <span class="recipe-label">Problem:  You want to attach a property to an item and the value of the property is a date.</span><br /><br />
+                <span class="recipe-label">Problem 7:  You want to attach a property to an item and the value of the property is a date.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div itemscope itemtype="http://www.example.com/JazzMusician&gt;
@@ -231,7 +231,7 @@
 
 
             <div id="recipe-8" class="recipe">
-                <span class="recipe-label">Problem: You want to attach a property to an item and the property's value is another item.</span><br /><br />
+                <span class="recipe-label">Problem 8: You want to attach a property to an item and the property's value is another item.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div itemscope itemtype="http://www.example.com/JazzGroup&gt;
@@ -261,7 +261,7 @@
             </div>
             
             <div id="recipe-9" class="recipe">
-                <span class="recipe-label">Problem: You want to attach a property to an item but the property's value isn't a descendant of the item.</span><br /><br />
+                <span class="recipe-label">Problem 9: You want to attach a property to an item but the property's value isn't a descendant of the item.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         Chick Corea Akoustic Band -
@@ -284,7 +284,7 @@
             </div>
             
             <div id="recipe-10" class="recipe">
-                <span class="recipe-label">Problem: You want an item to have multiple properties each having the same value.</span><br /><br />
+                <span class="recipe-label">Problem 11: You want an item to have multiple properties each having the same value.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div itemscope itemtype="http://www.example.com/JazzMusician"&gt;
@@ -320,7 +320,7 @@
             </div>
             
             <div id="recipe-12" class="recipe">
-                <span class="recipe-label">Problem: You want to create an item with a unique ID.  Not just unique to the page but unique on the web.</span><br /><br />
+                <span class="recipe-label">Problem 12: You want to create an item with a unique ID.  Not just unique to the page but unique on the web.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>
         &lt;div itemtype="http://www.example.com/album" <span class="bright">itemid="B0000262LA"</span>&gt;Offramp&lt;/div&gt;,
@@ -336,7 +336,7 @@
             </div>
             
             <div id="recipe-13" class="recipe">
-                <span class="recipe-label">Problem: You want to store microdata information in JSON, either
+                <span class="recipe-label">Problem 13: You want to store microdata information in JSON, either
                                                     prior to putting it into HTML or after parsing it out of HTML.</span><br /><br />
                 <span class="recipe-label">Recipe:</span><br />
                 <pre>

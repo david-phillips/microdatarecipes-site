@@ -64,6 +64,9 @@ span.pointer {
     margin-top: 30px;
     width: 20%;
 }
+#recipe-list li {
+    margin-top: 10px;
+}
 .selected-link {
     background-color: #FFF380;
 }
